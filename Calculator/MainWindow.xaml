@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Calculator"
         mc:Ignorable="d"
-        Title="MainWindow" Height="390" Width="375" Background="#FFF8DC">
+        Title="Calculator" Height="390" Width="375" Background="#FFF8DC">
     <Grid Margin="0,0,0,-6">
         <TextBox x:Name="CalculateBox" Width="350" Height="60" VerticalAlignment="Top" Margin="0,21,0,0" HorizontalAlignment="Center" Background="#F5DEB3" FontSize="18"/>
         <Button x:Name="btnC" Height="30" Width="50" HorizontalAlignment="Left" Margin="25,0,0,150" Content="C" Foreground="Red" Background="#FFE4C4" Click="buttonCClick"/>
