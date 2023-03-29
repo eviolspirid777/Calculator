@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="390" Width="375" Background="#FFF8DC">
     <Grid Margin="0,0,0,-6">
-        <TextBox x:Name="CalculateBox" Width="350" Height="60" VerticalAlignment="Top" Margin="0,21,0,0" HorizontalAlignment="Center"/>
+        <TextBox x:Name="CalculateBox" Width="350" Height="60" VerticalAlignment="Top" Margin="0,21,0,0" HorizontalAlignment="Center" Background="#F5DEB3"/>
         <Button x:Name="btnC" Height="30" Width="50" HorizontalAlignment="Left" Margin="25,0,0,150" Content="C" Foreground="Red" Background="#FFE4C4" Click="buttonCClick"/>
         <Button x:Name="btnMC" Height="30" Width="50" HorizontalAlignment="Left" Margin="90,0,0,150" Content="MC" Foreground="Red" Background="#FFE4C4" Click="buttonMCClick"/>
         <Button x:Name="btnEquals" Height="30" Width="50" HorizontalAlignment="Left" Margin="155,0,0,150" Content="=" Background="#FFE4C4" Click="EqualClick"/>
