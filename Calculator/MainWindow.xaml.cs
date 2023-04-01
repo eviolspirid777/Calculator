@@ -205,7 +205,41 @@ namespace Calculator
 
         public double GetFirstNumber()          //Получает значение первой переменной
         {
-            return Convert.ToDouble(CalculateBox.Text);
+            if (double.TryParse(CalculateBox.Text, out var number))
+                return number;
+            else
+            {
+                MessageBox.Show("Вы ввели не число!");
+                CalculateBox.Text = null;
+                return 0;
+            }
+        }
+        public double GetSecondNumber()
+        {
+            if (!CalculateBox.Text.Contains("LOG"))
+            {
+                string[] substrings = CalculateBox.Text.Split(' ');         // разбиваем строку на массив подстрок
+                string numberStr = substrings[2];                              // извлекаем второй элемент массива
+                if (double.TryParse(numberStr, out double number))
+                    return number;
+                else
+                {
+                    MessageBox.Show("Вы ввели не число!");
+                    return 0;
+                }
+            }
+            else
+            {
+                string[] substrings = CalculateBox.Text.Split(' ');         // разбиваем строку на массив подстрок
+                string numberStr = substrings[1];                              // извлекаем второй элемент массива
+                if (double.TryParse(numberStr, out double number))
+                    return int.Parse(numberStr);
+                else
+                {
+                    MessageBox.Show("Вы ввели не число!");
+                    return 0;
+                }
+            }
         }
         public BigInteger Factorial(int n)                              //Факториал
         {
@@ -225,21 +259,6 @@ namespace Calculator
         public void CatchError()
         {
             CalculateBox.Text = "Error!";
-        }
-        public int GetSecondNumber ()
-        {
-            if (!CalculateBox.Text.Contains("LOG"))
-            {
-                string[] substrings = CalculateBox.Text.Split(' ');         // разбиваем строку на массив подстрок
-                string numberStr = substrings[2];                              // извлекаем второй элемент массива
-                return int.Parse(numberStr);
-            }
-            else
-            {
-                string[] substrings = CalculateBox.Text.Split(' ');         // разбиваем строку на массив подстрок
-                string numberStr = substrings[1];                              // извлекаем второй элемент массива
-                return int.Parse(numberStr);
-            }
         }
         public void ClearTextField() {CalculateBox.Text = null;}
     }
