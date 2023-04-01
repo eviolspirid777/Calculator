@@ -225,6 +225,7 @@ namespace Calculator
                 else
                 {
                     MessageBox.Show("Вы ввели не число!");
+                    CalculateBox.Text = null;
                     return 0;
                 }
             }
@@ -237,6 +238,7 @@ namespace Calculator
                 else
                 {
                     MessageBox.Show("Вы ввели не число!");
+                    CalculateBox.Text = null;
                     return 0;
                 }
             }
