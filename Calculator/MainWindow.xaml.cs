@@ -233,7 +233,7 @@ namespace Calculator
                 string[] substrings = CalculateBox.Text.Split(' ');         // разбиваем строку на массив подстрок
                 string numberStr = substrings[1];                              // извлекаем второй элемент массива
                 if (double.TryParse(numberStr, out double number))
-                    return int.Parse(numberStr);
+                    return number;
                 else
                 {
                     MessageBox.Show("Вы ввели не число!");
