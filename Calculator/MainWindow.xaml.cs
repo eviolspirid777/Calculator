@@ -133,22 +133,34 @@ namespace Calculator
         private void buttonMultiply(object e, RoutedEventArgs ard)                          //Высчитывает умножение
         {
             S1 = GetFirstNumber();
-            CalculateBox.Text += " * ";
+            if (S1 == 0)
+                ClearTextField();
+            else
+                CalculateBox.Text += " * ";
         }
         private void buttonPlus(object e, RoutedEventArgs ard)              //Высчитывает сложение
         {
             S1 = GetFirstNumber();
-            CalculateBox.Text += " + ";
+            if (S1 == 0)
+                ClearTextField();
+            else
+                CalculateBox.Text += " + ";
         }
         private void buttonMinus(object e, RoutedEventArgs ard)                     //Высчитывает вычитывание
         {
             S1 = GetFirstNumber();
-            CalculateBox.Text += " - ";
+            if(S1 == 0) 
+                ClearTextField();
+            else
+                CalculateBox.Text += " - ";
         }
         private void buttonDivision(object e, RoutedEventArgs ard)                          //Высчитывает деление
         {
             S1 = GetFirstNumber();
-            CalculateBox.Text += " / ";
+            if (S1 == 0)
+                ClearTextField();
+            else
+                CalculateBox.Text += " / ";
         }
         private void buttonSin(object e, RoutedEventArgs ard)                                                       //Высчитывает синус
         {
