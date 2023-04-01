@@ -101,7 +101,7 @@ namespace Calculator
         }
         public void buttonCClick(object e, RoutedEventArgs arg)                 //Обнуляет textbox
         {
-            CalculateBox.Text = null;
+            ClearTextField();
         }
         public void buttonMRClick(object e, RoutedEventArgs arg)            //Считывает из памяти на экран
         {
@@ -210,7 +210,7 @@ namespace Calculator
             else
             {
                 MessageBox.Show("Вы ввели не число!");
-                CalculateBox.Text = null;
+                ClearTextField();
                 return 0;
             }
         }
@@ -225,7 +225,7 @@ namespace Calculator
                 else
                 {
                     MessageBox.Show("Вы ввели не число!");
-                    CalculateBox.Text = null;
+                    ClearTextField();
                     return 0;
                 }
             }
@@ -238,7 +238,7 @@ namespace Calculator
                 else
                 {
                     MessageBox.Show("Вы ввели не число!");
-                    CalculateBox.Text = null;
+                    ClearTextField();
                     return 0;
                 }
             }
