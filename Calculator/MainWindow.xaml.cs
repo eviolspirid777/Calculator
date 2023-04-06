@@ -257,7 +257,7 @@ namespace Calculator
         {
             if (int.TryParse(CalculateBox.Text, out int result))
             {
-                MemoryFirst -= result;
+                MemorySecond -= result;
                 ClearTextField();
             }
             else
