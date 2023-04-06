@@ -143,7 +143,28 @@ namespace Calculator
             }
             else if (e.Key == Key.Add)
             {
-                CalculateBox.Text += "+";
+                S1 = GetFirstNumber();
+                CalculateBox.Text += " + ";
+            }
+            else if (e.Key == Key.Subtract)
+            {
+                S1 = GetFirstNumber();
+                CalculateBox.Text += " - ";
+            }
+            else if (e.Key == Key.Multiply)
+            {
+                S1 = GetFirstNumber();
+                CalculateBox.Text += " * ";
+            }
+            else if (e.Key == Key.Divide)
+            {
+                S1 = GetFirstNumber();
+                CalculateBox.Text += " / ";
+            }
+            else if (e.Key == Key.Decimal)
+            {
+                S1 = GetFirstNumber();
+                CalculateBox.Text += ",";
             }
             else if (e.Key == Key.Back)
             {
