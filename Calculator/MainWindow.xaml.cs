@@ -207,11 +207,17 @@ namespace Calculator
         }
         public void buttonM1RClick(object e, RoutedEventArgs arg)            //Считывает из памяти на экран
         {
-            CalculateBox.Text = Convert.ToString(MemoryFirst);
+            if(CheckSymbols())
+                CalculateBox.Text = Convert.ToString(MemoryFirst);
+            else
+                CalculateBox.Text += Convert.ToString(MemoryFirst);
         }
         public void buttonM2RClick(object e, RoutedEventArgs arg)            //Считывает из памяти на экран
         {
-            CalculateBox.Text = Convert.ToString(MemorySecond);
+            if (CheckSymbols())
+                CalculateBox.Text = Convert.ToString(MemorySecond);
+            else
+                CalculateBox.Text += Convert.ToString(MemorySecond);
         }
         public void buttonM1CClick(object e, RoutedEventArgs arg)                //Обнуляет 1 память
         {
