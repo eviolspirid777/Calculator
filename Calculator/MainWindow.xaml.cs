@@ -19,7 +19,7 @@ namespace Calculator
 {
     public partial class MainWindow : Window
     {
-        static double S1, S2, Memory = 0;
+        static double S1, S2, MemoryFirst, MemorySecond = 0;
         public MainWindow()
         {
             InitializeComponent();
@@ -59,6 +59,99 @@ namespace Calculator
                 CalculateBox.Text = Convert.ToString(Math.Log(S2, S1));
             }
         }
+        public void WindowKeyDown(object sender, KeyEventArgs e)                //Обработка нажатия клавиш на клавиатуре
+        {
+            if (e.Key == Key.D1)
+            {
+                CalculateBox.Text += "1";
+            }
+            else if (e.Key == Key.D2)
+            {
+                CalculateBox.Text += "2";
+            }
+            else if (e.Key == Key.D3)
+            {
+                CalculateBox.Text += "3";
+            }
+            else if (e.Key == Key.D4)
+            {
+                CalculateBox.Text += "4";
+            }
+            else if (e.Key == Key.D5)
+            {
+                CalculateBox.Text += "5";
+            }
+            else if (e.Key == Key.D6)
+            {
+                CalculateBox.Text += "6";
+            }
+            else if (e.Key == Key.D7)
+            {
+                CalculateBox.Text += "7";
+            }
+            else if (e.Key == Key.D8)
+            {
+                CalculateBox.Text += "8";
+            }
+            else if (e.Key == Key.D9)
+            {
+                CalculateBox.Text += "9";
+            }
+            else if (e.Key == Key.NumPad0)
+            {
+                CalculateBox.Text += "0";
+            }
+            else if (e.Key == Key.NumPad1)
+            {
+                CalculateBox.Text += "1";
+            }
+            else if (e.Key == Key.NumPad2)
+            {
+                CalculateBox.Text += "2";
+            }
+            else if (e.Key == Key.NumPad3)
+            {
+                CalculateBox.Text += "3";
+            }
+            else if (e.Key == Key.NumPad4)
+            {
+                CalculateBox.Text += "4";
+            }
+            else if (e.Key == Key.NumPad5)
+            {
+                CalculateBox.Text += "5";
+            }
+            else if (e.Key == Key.NumPad6)
+            {
+                CalculateBox.Text += "6";
+            }
+            else if (e.Key == Key.NumPad7)
+            {
+                CalculateBox.Text += "7";
+            }
+            else if (e.Key == Key.NumPad8)
+            {
+                CalculateBox.Text += "8";
+            }
+            else if (e.Key == Key.NumPad9)
+            {
+                CalculateBox.Text += "9";
+            }
+            else if (e.Key == Key.D0)
+            {
+                CalculateBox.Text += "0";
+            }
+            else if (e.Key == Key.Add)
+            {
+                CalculateBox.Text += "+";
+            }
+            else if (e.Key == Key.Back)
+            {
+                if(CalculateBox.Text.Length != 0)
+                CalculateBox.Text = CalculateBox.Text.Substring(0, CalculateBox.Text.Length - 1);
+            }
+        }
+
         public void button0Click(object e, RoutedEventArgs arg)     //0
         {
             CalculateBox.Text += "0";
@@ -71,9 +164,9 @@ namespace Calculator
         {
             CalculateBox.Text += "2";
         }
-        public void button3Click(object e, RoutedEventArgs arg)         //3
-        {
-            CalculateBox.Text += "3";
+        public void button3Click(object sender, RoutedEventArgs arg)         //3
+        { 
+                CalculateBox.Text += "3";
         }
         public void button4Click(object e, RoutedEventArgs arg)         //4
         {
@@ -99,30 +192,66 @@ namespace Calculator
         {
             CalculateBox.Text += "9";
         }
+        public void BackClick(object sender, RoutedEventArgs arg)                                   //Удаляет последний символ в строке
+        {
+            if(CalculateBox.Text.Length > 0)
+                CalculateBox.Text = CalculateBox.Text.Substring(0, CalculateBox.Text.Length - 1);
+        }
+        public void DotClick(object sender, RoutedEventArgs arg)                        //Функция для запятой (работа с дробными и десятичными числами)
+        {
+            CalculateBox.Text += ",";
+        }
         public void buttonCClick(object e, RoutedEventArgs arg)                 //Обнуляет textbox
         {
             ClearTextField();
         }
-        public void buttonMRClick(object e, RoutedEventArgs arg)            //Считывает из памяти на экран
+        public void buttonM1RClick(object e, RoutedEventArgs arg)            //Считывает из памяти на экран
         {
-            CalculateBox.Text = Convert.ToString(Memory);
+            CalculateBox.Text = Convert.ToString(MemoryFirst);
         }
-        public void buttonMCClick(object e, RoutedEventArgs arg)                //Обнуляет память
+        public void buttonM2RClick(object e, RoutedEventArgs arg)            //Считывает из памяти на экран
         {
-            Memory = 0;
+            CalculateBox.Text = Convert.ToString(MemorySecond);
         }
-        public void buttonMPlusClick(object e, RoutedEventArgs arg)                 //Прибавляет к памяти Memory число в textbox
+        public void buttonM1CClick(object e, RoutedEventArgs arg)                //Обнуляет 1 память
+        {
+            MemoryFirst = 0;
+        }
+        public void buttonM2CClick(object e, RoutedEventArgs arg)                //Обнуляет 2 память
+        {
+            MemorySecond = 0;
+        }
+        public void buttonM1PlusClick(object e, RoutedEventArgs arg)                 //Прибавляет к памяти Memory 1 число в textbox
         {
             if (CheckSymbols())
-                Memory += GetFirstNumber();
+                MemoryFirst += GetFirstNumber();
             else
                 MessageBox.Show("Вы не выполнили операцию, прежде чем записать в память!");
         }
-        private void buttonMMinusClick(object e, RoutedEventArgs arg)               //Вычитает из памяти Memory число в textbox
+        public void buttonM2PlusClick(object e, RoutedEventArgs arg)                 //Прибавляет к памяти Memory 2 число в textbox
+        {
+            if (CheckSymbols())
+                MemorySecond += GetFirstNumber();
+            else
+                MessageBox.Show("Вы не выполнили операцию, прежде чем записать в память!");
+        }
+        private void buttonM1MinusClick(object e, RoutedEventArgs arg)               //Вычитает из памяти Memory 1 число в textbox
         {
             if(int.TryParse(CalculateBox.Text, out int result))
             {
-                Memory -= result;
+                MemoryFirst -= result;
+                ClearTextField();
+            }
+            else
+            {
+                MessageBox.Show("Memory is clear!");
+            }
+        }
+        private void buttonM2MinusClick(object e, RoutedEventArgs arg)               //Вычитает из памяти Memory 2 число в textbox
+        {
+            if (int.TryParse(CalculateBox.Text, out int result))
+            {
+                MemoryFirst -= result;
                 ClearTextField();
             }
             else

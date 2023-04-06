@@ -5,23 +5,29 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Calculator"
         mc:Ignorable="d"
-        Title="Calculator" Height="390" Width="375" Background="#FFF8DC">
+        Title="Calculator" Height="390" Width="500" Background="#FFF8DC" KeyDown="WindowKeyDown">
     <Grid Margin="0,0,0,-6">
-        <TextBox x:Name="CalculateBox" Width="350" Height="60" VerticalAlignment="Top" Margin="0,21,0,0" HorizontalAlignment="Center" Background="#F5DEB3" FontSize="18"/>
+        <TextBox x:Name="CalculateBox" Width="470" Height="60" VerticalAlignment="Top"  HorizontalAlignment="Center" Background="#F5DEB3" FontSize="18" IsEnabled="False" Margin="0,19,0,0" FontWeight="Bold" FontFamily="Arial Black"/>
         <Button x:Name="btnC" Height="30" Width="50" HorizontalAlignment="Left" Margin="25,0,0,150" Content="C" Foreground="Red" Background="#FFE4C4" Click="buttonCClick" IsCancel="True"/>
-        <Button x:Name="btnMC" Height="30" Width="50" HorizontalAlignment="Left" Margin="90,0,0,150" Content="MC" Foreground="Red" Background="#FFE4C4" Click="buttonMCClick"/>
-        <Button x:Name="btnEquals" Height="30" Width="50" HorizontalAlignment="Left" Margin="155,0,0,150" Content="=" Background="#FFE4C4" Click="EqualClick"/>
-        <Button x:Name="btnMR" Height="30" Width="50" HorizontalAlignment="Left" Margin="220,0,0,150" Content="MR" Background="#FFE4C4" Click="buttonMRClick"/>
+        <Button x:Name="btnM1C" Height="30" Width="50" HorizontalAlignment="Left" Margin="90,0,0,150" Content="M1C" Foreground="Red" Background="#FFE4C4" Click="buttonM1CClick"/>
+        <Button x:Name="btnM2C" Height="30" Width="50" HorizontalAlignment="Left" Margin="155,0,0,150" Content="M2C" Foreground="Red" Background="#FFE4C4" Click="buttonM2CClick"/>
+        <Button x:Name="btnEquals" Height="30" Width="50" HorizontalAlignment="Left" Margin="221,0,0,150" Content="=" Background="#FFE4C4" Click="EqualClick"/>
+        <Button x:Name="btnBack" Height="30" Width="50" HorizontalAlignment="Left" Margin="221,0,0,70" Content="Back" Background="#FFE4C4" Click="BackClick"/>
+        <Button x:Name="btnDot" Height="30" Width="50" HorizontalAlignment="Left" Margin="221,0,0,-10" Content="," Background="#FFE4C4" Click="DotClick"/>
+        <Button x:Name="btnMR1" Height="30" Width="50" HorizontalAlignment="Left" Margin="348,0,0,150" Content="MR1" Background="#FFE4C4" Click="buttonM1RClick"/>
+        <Button x:Name="btnMR2" Height="30" Width="50" HorizontalAlignment="Left" Margin="408,0,0,150" Content="MR2" Background="#FFE4C4" Click="buttonM2RClick"/>
         <Button x:Name="btnPlus" Height="30" Width="50" HorizontalAlignment="Left" Margin="285,0,0,150" Content="+" Background="#FFE4C4" Click="buttonPlus"/>
         <Button x:Name="btn7" Height="30" Width="50" HorizontalAlignment="Left" Margin="25,0,0,70" Content="7" Background="#FFE4C4" Click="button7Click"/>
         <Button x:Name="btn8" Height="30" Width="50" HorizontalAlignment="Left" Margin="90,0,0,70" Content="8" Background="#FFE4C4" Click="button8Click"/>
         <Button x:Name="btn9" Height="30" Width="50" HorizontalAlignment="Left" Margin="155,0,0,70" Content="9" Background="#FFE4C4" Click="button9Click"/>
-        <Button x:Name="btnMPlus" Height="30" Width="50" HorizontalAlignment="Left" Margin="220,0,0,70" Content="M+" Background="#FFE4C4" Click="buttonMPlusClick"/>
+        <Button x:Name="btnM1Plus" Height="30" Width="50" HorizontalAlignment="Left" Margin="349,0,0,70" Content="M1+" Background="#FFE4C4" Click="buttonM1PlusClick"/>
+        <Button x:Name="btnMP2lus" Height="30" Width="50" HorizontalAlignment="Left" Margin="409,0,0,70" Content="M2+" Background="#FFE4C4" Click="buttonM2PlusClick"/>
         <Button x:Name="btnMinus" Height="30" Width="50" HorizontalAlignment="Left" Margin="285,0,0,70" Content="-" Background="#FFE4C4" Click="buttonMinus" />
         <Button x:Name="btn4" Height="30" Width="50" HorizontalAlignment="Left" Margin="25,0,0,-10" Content="4" Background="#FFE4C4" Click="button4Click"/>
         <Button x:Name="btn5" Height="30" Width="50" HorizontalAlignment="Left" Margin="90,0,0,-10" Content="5" Background="#FFE4C4" Click="button5Click"/>
         <Button x:Name="btn6" Height="30" Width="50" HorizontalAlignment="Left" Margin="155,0,0,-10" Content="6" Background="#FFE4C4" Click="button6Click"/>
-        <Button x:Name="btnMminus" Height="30" Width="50" HorizontalAlignment="Left" Margin="220,0,0,-10" Content="M-" Background="#FFE4C4" Click="buttonMMinusClick" />
+        <Button x:Name="btnM1minus" Height="30" Width="50" HorizontalAlignment="Left" Margin="349,0,0,-10" Content="M1-" Background="#FFE4C4" Click="buttonM1MinusClick" />
+        <Button x:Name="btnM2minus" Height="30" Width="50" HorizontalAlignment="Left" Margin="409,0,0,-10" Content="M2-" Background="#FFE4C4" Click="buttonM2MinusClick" />
         <Button x:Name="btnMultiply" Height="30" Width="50" HorizontalAlignment="Left" Margin="285,0,0,-10" Content="*" Background="#FFE4C4" Click="buttonMultiply"/>
         <Button x:Name="btn1" Height="30" Width="50" HorizontalAlignment="Left" Margin="25,0,0,-90" Content="1" Background="#FFE4C4" Click="button1Click"/>
         <Button x:Name="btn2" Height="30" Width="50" HorizontalAlignment="Left" Margin="90,0,0,-90" Content="2" Background="#FFE4C4" Click="button2Click"/>
