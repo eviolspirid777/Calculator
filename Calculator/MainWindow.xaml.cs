@@ -142,7 +142,7 @@ namespace Calculator
             {
                 CalculateBox.Text += "0";
             }
-            else if (Keyboard.Modifiers == ModifierKeys.Shift && e.Key == Key.OemPlus)          //обработка нажатия shift + '+'
+            else if (Keyboard.Modifiers == ModifierKeys.Shift && e.Key == Key.OemPlus)          //обработка нажатия (shift + '+')
             {
                 RoutedEventArgs args = new RoutedEventArgs(Button.ClickEvent);                    //создает событие нажатия на клавишу
                 btnEquals.RaiseEvent(args);                                                                                //поднимает(вызывает событие args), правильнее симулирует нажатие
