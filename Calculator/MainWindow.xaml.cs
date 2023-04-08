@@ -20,6 +20,7 @@ namespace Calculator
     public partial class MainWindow : Window
     {
         static double S1, S2, MemoryFirst, MemorySecond = 0;
+        bool flag = false;
         public MainWindow()
         {
             InitializeComponent();
@@ -141,10 +142,19 @@ namespace Calculator
             {
                 CalculateBox.Text += "0";
             }
-            else if (e.Key == Key.Add)
+            else if (Keyboard.Modifiers == ModifierKeys.Shift && e.Key == Key.OemPlus)          //обработка нажатия shift + '+'
+            {
+                RoutedEventArgs args = new RoutedEventArgs(Button.ClickEvent);                    //создает событие нажатия на клавишу
+                btnEquals.RaiseEvent(args);                                                                                //поднимает(вызывает событие args), правильнее симулирует нажатие
+            }
+            else if (e.Key == Key.Add || e.Key == Key.OemPlus)
             {
                 S1 = GetFirstNumber();
                 CalculateBox.Text += " + ";
+            }
+            else if (e.Key == Key.Space)
+            {
+                CalculateBox.Text += " ";
             }
             else if (e.Key == Key.Subtract)
             {
@@ -168,11 +178,26 @@ namespace Calculator
             }
             else if (e.Key == Key.Back)
             {
-                if(CalculateBox.Text.Length != 0)
-                CalculateBox.Text = CalculateBox.Text.Substring(0, CalculateBox.Text.Length - 1);
+                if (CalculateBox.Text.Length != 0)
+                    CalculateBox.Text = CalculateBox.Text.Substring(0, CalculateBox.Text.Length - 1);
             }
         }
 
+        public void buttonPlusMinusClick(object sender, EventArgs e)
+        {
+            if (!flag)
+            {
+                if (CalculateBox.Text.EndsWith('+'))
+                    CalculateBox.Text = CalculateBox.Text.Substring(0, CalculateBox.Text.Length - 1);
+                CalculateBox.Text += "-";
+                flag = true;
+            }
+            else if (flag)
+            {
+                CalculateBox.Text = CalculateBox.Text.Substring(0, CalculateBox.Text.Length - 1) + "+";
+                flag = false;
+            }
+        }
         public void button0Click(object e, RoutedEventArgs arg)     //0
         {
             CalculateBox.Text += "0";
