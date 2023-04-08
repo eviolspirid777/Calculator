@@ -28,27 +28,28 @@ namespace Calculator
 
         public void EqualClick(object e, RoutedEventArgs arg)       //Функция для обработки результата
         {
+            string[] substring = CalculateBox.Text.Split(' ');
             S2 = GetSecondNumber();
-            if (CalculateBox.Text.Contains('+'))
+            if (substring[1] == "+")
             {
                 CalculateBox.Text = Convert.ToString(S1 + S2);
             }
-            if (CalculateBox.Text.Contains('-'))
+            if (substring[1] == "-")
             {
                 CalculateBox.Text = Convert.ToString(S1 - S2);
             }
-            if (CalculateBox.Text.Contains('*'))
+            if (substring[1] == "*")
             {
                 CalculateBox.Text = Convert.ToString(S1 * S2);
             }
-            if (CalculateBox.Text.Contains('/'))
+            if (substring[1] == "/")
             {
                 if (S2 == 0)
                     CatchError();
                 else
                     CalculateBox.Text = Convert.ToString(S1 / S2);
             }
-            if (CalculateBox.Text.Contains('^'))
+            if (substring[1] == "^")
             {
                 CalculateBox.Text = Convert.ToString(Math.Pow(S1,S2));
             }
@@ -194,7 +195,9 @@ namespace Calculator
             }
             else if (flag)
             {
-                CalculateBox.Text = CalculateBox.Text.Substring(0, CalculateBox.Text.Length - 1) + "+";
+                if (CalculateBox.Text.EndsWith('-'))
+                    CalculateBox.Text = CalculateBox.Text.Substring(0,CalculateBox.Text.Length - 1) + "+";
+                CalculateBox.Text += "-";
                 flag = false;
             }
         }
@@ -399,7 +402,9 @@ namespace Calculator
         public double GetFirstNumber()          //Получает значение первой переменной
         {
             if (double.TryParse(CalculateBox.Text, out var number))
-                return number;
+            {
+                    return number;
+            }
             else
             {
                 MessageBox.Show("Вы ввели не число!");
@@ -414,7 +419,9 @@ namespace Calculator
                 string[] substrings = CalculateBox.Text.Split(' ');         // разбиваем строку на массив подстрок
                 string numberStr = substrings[2];                              // извлекаем второй элемент массива
                 if (double.TryParse(numberStr, out double number))
-                    return number;
+                {
+                        return number;
+                }
                 else
                 {
                     MessageBox.Show("Вы ввели не число!");
@@ -427,7 +434,7 @@ namespace Calculator
                 string[] substrings = CalculateBox.Text.Split(' ');         // разбиваем строку на массив подстрок
                 string numberStr = substrings[1];                              // извлекаем второй элемент массива
                 if (double.TryParse(numberStr, out double number))
-                    return number;
+                        return number;
                 else
                 {
                     MessageBox.Show("Вы ввели не число!");
