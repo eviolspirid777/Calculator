@@ -25,45 +25,6 @@ namespace Calculator
         {
             InitializeComponent();
         }
-
-        public void EqualClick(object e, RoutedEventArgs arg)       //Функция для обработки результата
-        {
-            if (!CheckText())
-                {
-                    string[] substring = CalculateBox.Text.Split(' ');
-                    S2 = GetSecondNumber();
-                    if (substring[1] == "+")
-                    {
-                        CalculateBox.Text = Convert.ToString(S1 + S2);
-                    }
-                    if (substring[1] == "-")
-                    {
-                        CalculateBox.Text = Convert.ToString(S1 - S2);
-                    }
-                    if (substring[1] == "*")
-                    {
-                        CalculateBox.Text = Convert.ToString(S1 * S2);
-                    }
-                    if (substring[1] == "/")
-                    {
-                        if (S2 == 0)
-                            CatchError();
-                        else
-                            CalculateBox.Text = Convert.ToString(S1 / S2);
-                    }
-                    if (substring[1] == "^")
-                    {
-                        CalculateBox.Text = Convert.ToString(Math.Pow(S1, S2));
-                    }
-                    if (CalculateBox.Text.Contains("LOG"))
-                    {
-                        string[] substrings = CalculateBox.Text.Split(' ');         // разбиваем строку на массив подстрок
-                        S1 = int.Parse(substrings[1]);                              // извлекаем первый элемент массива
-                        S2 = int.Parse(substrings[2]);
-                        CalculateBox.Text = Convert.ToString(Math.Log(S2, S1));
-                    }
-                }
-        }
         public void WindowKeyDown(object sender, KeyEventArgs e)                //Обработка нажатия клавиш на клавиатуре
         {
             if (e.Key == Key.D1)
@@ -189,6 +150,44 @@ namespace Calculator
             {
                 RoutedEventArgs args = new RoutedEventArgs(Button.ClickEvent);                    //создает событие нажатия на клавишу
                 btnEquals.RaiseEvent(args);                                                                                //поднимает(вызывает событие args), правильнее симулирует нажатие
+            }
+        }
+        public void EqualClick(object e, RoutedEventArgs arg)       //Функция для обработки результата
+        {
+            if (!CheckText())    //(false => чисел больше 1; true => чисел меньше 1)
+            {
+                string[] substring = CalculateBox.Text.Split(' ');
+                S2 = GetSecondNumber();
+                if (substring[1] == "+")
+                {
+                    CalculateBox.Text = Convert.ToString(S1 + S2);
+                }
+                if (substring[1] == "-")
+                {
+                    CalculateBox.Text = Convert.ToString(S1 - S2);
+                }
+                if (substring[1] == "*")
+                {
+                    CalculateBox.Text = Convert.ToString(S1 * S2);
+                }
+                if (substring[1] == "/")
+                {
+                    if (S2 == 0)
+                        CatchError();
+                    else
+                        CalculateBox.Text = Convert.ToString(S1 / S2);
+                }
+                if (substring[1] == "^")
+                {
+                    CalculateBox.Text = Convert.ToString(Math.Pow(S1, S2));
+                }
+                if (CalculateBox.Text.Contains("LOG"))
+                {
+                    string[] substrings = CalculateBox.Text.Split(' ');         // разбиваем строку на массив подстрок
+                    S1 = int.Parse(substrings[1]);                              // извлекаем первый элемент массива
+                    S2 = int.Parse(substrings[2]);
+                    CalculateBox.Text = Convert.ToString(Math.Log(S2, S1));
+                }
             }
         }
         public void buttonPlusMinusClick(object sender, EventArgs e)
