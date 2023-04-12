@@ -67,6 +67,10 @@ namespace Calculator
             {
                 CalculateBox.Text += "1";
             }
+            else if (e.Key == Key.Space)
+            {
+                CalculateBox.Text += " ";
+            }
             else if (e.Key == Key.D2)
             {
                 CalculateBox.Text += "2";
@@ -153,10 +157,6 @@ namespace Calculator
                 S1 = GetFirstNumber();
                 CalculateBox.Text += " + ";
             }
-            else if (e.Key == Key.Space)
-            {
-                CalculateBox.Text += " ";
-            }
             else if (e.Key == Key.Subtract)
             {
                 S1 = GetFirstNumber();
@@ -183,7 +183,6 @@ namespace Calculator
                     CalculateBox.Text = CalculateBox.Text.Substring(0, CalculateBox.Text.Length - 1);
             }
         }
-
         public void buttonPlusMinusClick(object sender, EventArgs e)
         {
             if (!flag)
@@ -196,8 +195,8 @@ namespace Calculator
             else if (flag)
             {
                 if (CalculateBox.Text.EndsWith('-'))
-                    CalculateBox.Text = CalculateBox.Text.Substring(0,CalculateBox.Text.Length - 1) + "+";
-                CalculateBox.Text += "-";
+                    CalculateBox.Text = CalculateBox.Text.Substring(0,CalculateBox.Text.Length - 1);
+                CalculateBox.Text += "+";
                 flag = false;
             }
         }
@@ -316,86 +315,112 @@ namespace Calculator
         }
         private void buttonMultiply(object e, RoutedEventArgs ard)                          //Высчитывает умножение
         {
-            S1 = GetFirstNumber();
-            if (S1 == 0)
-                ClearTextField();
-            else
-                CalculateBox.Text += " * ";
+            if (CheckText())
+            {
+                S1 = GetFirstNumber();
+                if (S1 == 0)
+                    ClearTextField();
+                else
+                    CalculateBox.Text += " * ";
+            }
         }
         private void buttonPlus(object e, RoutedEventArgs ard)              //Высчитывает сложение
         {
-            S1 = GetFirstNumber();
-            if (S1 == 0)
-                ClearTextField();
-            else
-                CalculateBox.Text += " + ";
+            if (CheckText())
+            {
+                S1 = GetFirstNumber();
+                if (S1 == 0)
+                    ClearTextField();
+                else
+                    CalculateBox.Text += " + ";
+            }
         }
         private void buttonMinus(object e, RoutedEventArgs ard)                     //Высчитывает вычитывание
         {
-            S1 = GetFirstNumber();
-            if(S1 == 0) 
-                ClearTextField();
-            else
-                CalculateBox.Text += " - ";
+            if (CheckText())
+            {
+                S1 = GetFirstNumber();
+                if (S1 == 0)
+                    ClearTextField();
+                else
+                    CalculateBox.Text += " - ";
+            }
         }
         private void buttonDivision(object e, RoutedEventArgs ard)                          //Высчитывает деление
         {
-            S1 = GetFirstNumber();
-            if (S1 == 0)
-                ClearTextField();
-            else
-                CalculateBox.Text += " / ";
+            if (CheckText())
+            {
+                S1 = GetFirstNumber();
+                if (S1 == 0)
+                    ClearTextField();
+                else
+                    CalculateBox.Text += " / ";
+            }
         }
         private void buttonSin(object e, RoutedEventArgs ard)                                                       //Высчитывает синус
         {
-            CalculateBox.Text = Convert.ToString(Math.Sin(GetFirstNumber()));
+            if(CheckText())
+                CalculateBox.Text = Convert.ToString(Math.Sin(GetFirstNumber()));
         }
         private void buttonCos(object e, RoutedEventArgs ard)                                                           //Высчитывает косинус
         {
-            CalculateBox.Text = Convert.ToString(Math.Cos(GetFirstNumber()));
+            if(CheckText())
+                CalculateBox.Text = Convert.ToString(Math.Cos(GetFirstNumber()));
         }
         private void buttonTan(object e, RoutedEventArgs ard)                       //Высчитывает тангенс
         {
-            CalculateBox.Text = Convert.ToString(Math.Tan(GetFirstNumber()));
+            if(CheckText())
+                CalculateBox.Text = Convert.ToString(Math.Tan(GetFirstNumber()));
         }
         private void buttonArctg(object e, RoutedEventArgs ard)                                 //Высчитывает ArcTg
         {
-            CalculateBox.Text = Convert.ToString(Math.Atan(GetFirstNumber()));
+            if(CheckText())
+                CalculateBox.Text = Convert.ToString(Math.Atan(GetFirstNumber()));
         }
         private void buttonLn(object e, RoutedEventArgs ard)                                                    //Высчитывает Ln
         {
-            CalculateBox.Text = Convert.ToString(Math.Log(GetFirstNumber()));
+            if(CheckText())
+                CalculateBox.Text = Convert.ToString(Math.Log(GetFirstNumber()));
         }
         private void buttonFactorial(object e, RoutedEventArgs ard)                 //Высчитывает факториал !x
         {
-            CalculateBox.Text = Factorial(Convert.ToInt32(CalculateBox.Text)).ToString();
+            if(CheckText())
+                CalculateBox.Text = Factorial(Convert.ToInt32(CalculateBox.Text)).ToString();
         }
         private void buttonReverse(object e, RoutedEventArgs ard)                   //Обратная дробь 1/X
         {
-            if (GetFirstNumber() == 0)
-                CatchError();
-            else
-                CalculateBox.Text = Convert.ToString(1 / (GetFirstNumber()));
+            if (CheckText())
+            {
+                if (GetFirstNumber() == 0)
+                    CatchError();
+                else
+                    CalculateBox.Text = Convert.ToString(1 / GetFirstNumber());
+            }
         }
         private void buttonExp(object e, RoutedEventArgs ard)                       //Высчитывает exp^X
         {
-            CalculateBox.Text = Convert.ToString(Math.Exp(GetFirstNumber()));
+            if(CheckText())
+               CalculateBox.Text = Convert.ToString(Math.Exp(GetFirstNumber()));
         }
         private void buttonExponentiation(object e, RoutedEventArgs ard)                //Высчитывает x^y
         {
-            S1 = GetFirstNumber();
-            CalculateBox.Text += " ^ ";
+            if (CheckText())
+            {
+                S1 = GetFirstNumber();
+                CalculateBox.Text += " ^ ";
+            }
         }
         private void buttonLog(object e, RoutedEventArgs ard)                       //высчитывает Логарифм
         {
-            if (CalculateBox.Text != "")
+            if (CheckText())
             {
-                S1 = GetFirstNumber();
-                CalculateBox.Text = $"LOG {S1} Y";
-            }
-            else
-            {
-                CalculateBox.Text = $"LOG x Y";
+                if (CalculateBox.Text != "")
+                {
+                    S1 = GetFirstNumber();
+                    CalculateBox.Text = $"LOG {S1} Y";
+                }
+                else
+                    CalculateBox.Text = $"LOG x Y";
             }
         }
 
@@ -408,7 +433,6 @@ namespace Calculator
             else
             {
                 MessageBox.Show("Вы ввели не число!");
-                ClearTextField();
                 return 0;
             }
         }
@@ -425,7 +449,6 @@ namespace Calculator
                 else
                 {
                     MessageBox.Show("Вы ввели не число!");
-                    ClearTextField();
                     return 0;
                 }
             }
@@ -438,7 +461,6 @@ namespace Calculator
                 else
                 {
                     MessageBox.Show("Вы ввели не число!");
-                    ClearTextField();
                     return 0;
                 }
             }
@@ -451,7 +473,14 @@ namespace Calculator
 
             return factorial;
         }
-
+        public bool CheckText()
+        {
+            string [] substrings = CalculateBox.Text.Split(' ');
+            if (substrings.Length > 1)
+                return false;
+            else
+                return true;
+        }
         public bool CheckSymbols()
         {
             if (CalculateBox.Text.Contains('+') || CalculateBox.Text.Contains('-') || CalculateBox.Text.Contains('*') || CalculateBox.Text.Contains('/') || CalculateBox.Text.Contains("LOG") || CalculateBox.Text.Contains("Ln"))
