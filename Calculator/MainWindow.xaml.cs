@@ -155,7 +155,7 @@ namespace Calculator
         }
         public void EqualClick(object e, RoutedEventArgs arg)       //Функция для обработки результата
         {
-            if (!CheckText())    //(false => чисел больше 1; true => чисел меньше 1)
+            if (CheckText())    //(false => чисел больше 1; true => чисел меньше 1)
             {
                 string[] substring = CalculateBox.Text.Split(' ');
                 S2 = GetSecondNumber();
@@ -335,7 +335,7 @@ namespace Calculator
         }
         private void buttonMultiply(object e, RoutedEventArgs ard)                          //Высчитывает умножение
         {
-            if (CheckText())
+            if (!CheckText())
             {
                 S1 = GetFirstNumber();
                 if (S1 == 0)
@@ -346,7 +346,7 @@ namespace Calculator
         }
         private void buttonPlus(object e, RoutedEventArgs ard)              //Высчитывает сложение
         {
-            if (CheckText())
+            if (!CheckText())
             {
                 S1 = GetFirstNumber();
                 if (S1 == 0)
@@ -357,7 +357,7 @@ namespace Calculator
         }
         private void buttonMinus(object e, RoutedEventArgs ard)                     //Высчитывает вычитывание
         {
-            if (CheckText())
+            if (!CheckText())
             {
                 S1 = GetFirstNumber();
                 if (S1 == 0)
@@ -368,7 +368,7 @@ namespace Calculator
         }
         private void buttonDivision(object e, RoutedEventArgs ard)                          //Высчитывает деление
         {
-            if (CheckText())
+            if (!CheckText())
             {
                 S1 = GetFirstNumber();
                 if (S1 == 0)
@@ -379,37 +379,39 @@ namespace Calculator
         }
         private void buttonSin(object e, RoutedEventArgs ard)                                                       //Высчитывает синус
         {
-            if(CheckText())
+            if(!CheckText())
                 CalculateBox.Text = Convert.ToString(Math.Sin(GetFirstNumber()));
         }
         private void buttonCos(object e, RoutedEventArgs ard)                                                           //Высчитывает косинус
         {
-            if(CheckText())
+            if(!CheckText())
                 CalculateBox.Text = Convert.ToString(Math.Cos(GetFirstNumber()));
         }
         private void buttonTan(object e, RoutedEventArgs ard)                       //Высчитывает тангенс
         {
-            if(CheckText())
+            if(!CheckText())
                 CalculateBox.Text = Convert.ToString(Math.Tan(GetFirstNumber()));
         }
         private void buttonArctg(object e, RoutedEventArgs ard)                                 //Высчитывает ArcTg
         {
-            if(CheckText())
+            if(!CheckText())
                 CalculateBox.Text = Convert.ToString(Math.Atan(GetFirstNumber()));
         }
         private void buttonLn(object e, RoutedEventArgs ard)                                                    //Высчитывает Ln
         {
-            if(CheckText())
+            if(!CheckText())
                 CalculateBox.Text = Convert.ToString(Math.Log(GetFirstNumber()));
         }
         private void buttonFactorial(object e, RoutedEventArgs ard)                 //Высчитывает факториал !x
         {
-            if(CheckText())
-                CalculateBox.Text = Factorial(Convert.ToInt32(CalculateBox.Text)).ToString();
+            if (!CheckText() && int.TryParse(CalculateBox.Text, out int result))
+                CalculateBox.Text = Factorial(Convert.ToInt32(result)).ToString();
+            else
+                MessageBox.Show("Вы ввели не число!");
         }
         private void buttonReverse(object e, RoutedEventArgs ard)                   //Обратная дробь 1/X
         {
-            if (CheckText())
+            if (!CheckText())
             {
                 if (GetFirstNumber() == 0)
                     CatchError();
@@ -419,12 +421,12 @@ namespace Calculator
         }
         private void buttonExp(object e, RoutedEventArgs ard)                       //Высчитывает exp^X
         {
-            if(CheckText())
+            if(!CheckText())
                CalculateBox.Text = Convert.ToString(Math.Exp(GetFirstNumber()));
         }
         private void buttonExponentiation(object e, RoutedEventArgs ard)                //Высчитывает x^y
         {
-            if (CheckText())
+            if (!CheckText())
             {
                 S1 = GetFirstNumber();
                 CalculateBox.Text += " ^ ";
@@ -432,7 +434,7 @@ namespace Calculator
         }
         private void buttonLog(object e, RoutedEventArgs ard)                       //высчитывает Логарифм
         {
-            if (CheckText())
+            if (!CheckText())
             {
                 if (CalculateBox.Text != "")
                 {
@@ -497,9 +499,9 @@ namespace Calculator
         {
             string [] substrings = CalculateBox.Text.Split(' ');
             if (substrings.Length > 1)
-                return false;
-            else
                 return true;
+            else
+                return false;
         }
         public bool CheckSymbols()
         {
