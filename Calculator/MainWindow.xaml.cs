@@ -13,14 +13,15 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Numerics;
-
+using System.DirectoryServices.ActiveDirectory;
 
 namespace Calculator
 {
     public partial class MainWindow : Window
     {
         static double S1, S2, MemoryFirst, MemorySecond = 0;
-        bool flag = false;
+        bool flag, flagForDecimal = false;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -118,28 +119,28 @@ namespace Calculator
             }
             else if (e.Key == Key.Add || e.Key == Key.OemPlus)
             {
-                S1 = GetFirstNumber();
-                CalculateBox.Text += " + ";
+                RoutedEventArgs args = new RoutedEventArgs(Button.ClickEvent);                    //создает событие нажатия на клавишу
+                btnPlus.RaiseEvent(args);                                                                                //поднимает(вызывает событие args), правильнее симулирует нажатие
             }
             else if (e.Key == Key.Subtract)
             {
-                S1 = GetFirstNumber();
-                CalculateBox.Text += " - ";
+                RoutedEventArgs args = new RoutedEventArgs(Button.ClickEvent);                    //создает событие нажатия на клавишу
+                btnMinus.RaiseEvent(args);                                                                                //поднимает(вызывает событие args), правильнее симулирует нажатие
             }
             else if (e.Key == Key.Multiply)
             {
-                S1 = GetFirstNumber();
-                CalculateBox.Text += " * ";
+                RoutedEventArgs args = new RoutedEventArgs(Button.ClickEvent);                    //создает событие нажатия на клавишу
+                btnMultiply.RaiseEvent(args);                                                                                //поднимает(вызывает событие args), правильнее симулирует нажатие
             }
             else if (e.Key == Key.Divide)
             {
-                S1 = GetFirstNumber();
-                CalculateBox.Text += " / ";
+                RoutedEventArgs args = new RoutedEventArgs(Button.ClickEvent);                    //создает событие нажатия на клавишу
+                btnDivision.RaiseEvent(args);                                                                                //поднимает(вызывает событие args), правильнее симулирует нажатие
             }
             else if (e.Key == Key.Decimal)
             {
-                S1 = GetFirstNumber();
-                CalculateBox.Text += ",";
+                RoutedEventArgs args = new RoutedEventArgs(Button.ClickEvent);                    //создает событие нажатия на клавишу
+                btnDot.RaiseEvent(args);
             }
             else if (e.Key == Key.Back)
             {
@@ -254,7 +255,19 @@ namespace Calculator
         }
         public void DotClick(object sender, RoutedEventArgs arg)                        //Функция для запятой (работа с дробными и десятичными числами)
         {
-            CalculateBox.Text += ",";
+            if (flagForDecimal is false && CalculateBox.Text.Length != 0)           //Проверка на наличие флага И проверка на начало строки
+            {
+                flagForDecimal = true;
+                CalculateBox.Text += ",";
+            }
+            else
+            {
+                char[] decimilates = new char[] { '-', '+', '*', '/' };                 //набор разделителей
+                string[] SubString = CalculateBox.Text.Split(decimilates);          //разделяет на набор чисел
+                string LastString = SubString[SubString.Length-1];                 //присваивает последнюю подстроку переменной LastString
+                if (SubString.Length - 1 == CalculateBox.Text.Count(c => c == ',') && flagForDecimal is true && !LastString.EndsWith(' '))           //Вычитаем из кол-ва чисел 1, чтобы определить начало следующего числа
+                    CalculateBox.Text += ",";
+            }
         }
         public void buttonCClick(object e, RoutedEventArgs arg)                 //Обнуляет textbox
         {
