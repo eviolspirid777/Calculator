@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Numerics;
 using System.DirectoryServices.ActiveDirectory;
+using TempNumbers;
 
 namespace Calculator
 {
@@ -144,8 +145,18 @@ namespace Calculator
             }
             else if (e.Key == Key.Back)
             {
-                if (CalculateBox.Text.Length != 0)
+                if (CalculateBox.Text.EndsWith("LOG"))          //проверяет, заканчивается ли текст на LOG, если заканчивается - добавляет пробел (защита от случайного удаления)
+                {
+                    CalculateBox.Text += " ";
+                }
+                else if (CalculateBox.Text.Length != 0)
+                {
                     CalculateBox.Text = CalculateBox.Text.Substring(0, CalculateBox.Text.Length - 1);
+                    if(CalculateBox.Text.EndsWith(' '))                                                                                 //Проверяет, оканчивается ли текст на ' '
+                    {
+                        CalculateBox.Text = CalculateBox.Text.Substring(0, CalculateBox.Text.Length - 1);
+                    }
+                }
             }
             else if(e.Key == Key.Enter) 
             {
@@ -153,42 +164,51 @@ namespace Calculator
                 btnEquals.RaiseEvent(args);                                                                                //поднимает(вызывает событие args), правильнее симулирует нажатие
             }
         }
+        /*        public void EqualClick(object e, RoutedEventArgs arg)       //Функция для обработки результата
+                {
+                    if (CheckText())                              //(false => чисел больше 1; true => чисел меньше 1)
+                    {
+                        string[] substring = CalculateBox.Text.Split(' ');
+                        S2 = GetSecondNumber();
+                        if (substring[1] == "+")
+                        {
+                            CalculateBox.Text = Convert.ToString(S1 + S2);
+                        }
+                        if (substring[1] == "-")
+                        {
+                            CalculateBox.Text = Convert.ToString(S1 - S2);
+                        }
+                        if (substring[1] == "*")
+                        {
+                            CalculateBox.Text = Convert.ToString(S1 * S2);
+                        }
+                        if (substring[1] == "/")
+                        {
+                            if (S2 == 0)
+                                CatchError();
+                            else
+                                CalculateBox.Text = Convert.ToString(S1 / S2);
+                        }
+                        if (substring[1] == "^")
+                        {
+                            CalculateBox.Text = Convert.ToString(Math.Pow(S1, S2));
+                        }
+                        if (CalculateBox.Text.Contains("LOG"))
+                        {
+                            string[] substrings = CalculateBox.Text.Split(' ');         // разбиваем строку на массив подстрок
+                            S1 = int.Parse(substrings[1]);                              // извлекаем первый элемент массива
+                            S2 = int.Parse(substrings[2]);
+                            CalculateBox.Text = Convert.ToString(Math.Log(S2, S1));
+                        }
+                    }
+                }
+        */
         public void EqualClick(object e, RoutedEventArgs arg)       //Функция для обработки результата
         {
-            if (CheckText())    //(false => чисел больше 1; true => чисел меньше 1)
+            if (CheckText())                              //(false => чисел больше 1; true => чисел меньше 1)
             {
-                string[] substring = CalculateBox.Text.Split(' ');
-                S2 = GetSecondNumber();
-                if (substring[1] == "+")
-                {
-                    CalculateBox.Text = Convert.ToString(S1 + S2);
-                }
-                if (substring[1] == "-")
-                {
-                    CalculateBox.Text = Convert.ToString(S1 - S2);
-                }
-                if (substring[1] == "*")
-                {
-                    CalculateBox.Text = Convert.ToString(S1 * S2);
-                }
-                if (substring[1] == "/")
-                {
-                    if (S2 == 0)
-                        CatchError();
-                    else
-                        CalculateBox.Text = Convert.ToString(S1 / S2);
-                }
-                if (substring[1] == "^")
-                {
-                    CalculateBox.Text = Convert.ToString(Math.Pow(S1, S2));
-                }
-                if (CalculateBox.Text.Contains("LOG"))
-                {
-                    string[] substrings = CalculateBox.Text.Split(' ');         // разбиваем строку на массив подстрок
-                    S1 = int.Parse(substrings[1]);                              // извлекаем первый элемент массива
-                    S2 = int.Parse(substrings[2]);
-                    CalculateBox.Text = Convert.ToString(Math.Log(S2, S1));
-                }
+                TempNumb numbers = new TempNumb(CalculateBox.Text);
+
             }
         }
         public void buttonPlusMinusClick(object sender, EventArgs e)
@@ -442,7 +462,7 @@ namespace Calculator
                     CalculateBox.Text = $"LOG {S1} Y";
                 }
                 else
-                    CalculateBox.Text = $"LOG x Y";
+                    CalculateBox.Text = "LOG x Y";
             }
         }
 
