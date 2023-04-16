@@ -19,17 +19,13 @@ namespace TempNumbers
         {
             char[] decimilates = new char[] { '-', '+', '*', '/' };                 //набор разделителей
             IntermediateText = text.Split(decimilates);
+            for (int b = 0; b < text.Length - 1; b++)                        //Сохраняет порядок действий в список
+            {
+                if (text[b] == '+' || text[b] == '-' || text[b] == '*' || text[b] == '/')
+                    Symbols.Add(text[b]);
+            }
             for (int i = 0; i < IntermediateText.Count(); i++)
             {
-                for (int b = 0; b < text.Length - 1; b++)                        //Сохраняет порядок действий в список
-                {
-                    if (text[b] != text[b + 1] && (text[b] == '+' || text[b] == '-' || text[b] == '*' || text[b] == '/'))
-                    {
-                        Symbols.Add(text[b]);
-                        if (text[b + 1] == '+' || text[b + 1] == '-' || text[b + 1] == '*' || text[b + 1] == '/')
-                            Symbols.Add(text[b + 1]);
-                    }
-                }
                 if (IntermediateText[i].EndsWith('+') || IntermediateText[i].EndsWith('-') || IntermediateText[i].EndsWith('*') || IntermediateText[i].EndsWith('/'))
                     IntermediateText[i] = IntermediateText[i].Substring(0, text.Length - 1);        //удаляем знаки "* - / +"
                 IntermediateText[i] = IntermediateText[i].Trim();         //обрезаем пробелы в конце
@@ -71,7 +67,7 @@ namespace TempNumbers
                     IntermediateNumbers.Add(Math.Pow(b[0], b[1]));
                 }
             }
-            TempText = "";             //обнуляет текстовую переменную
+            //TempText = "";             //обнуляет текстовую переменную
             for (int i = 0; i < IntermediateNumbers.Count; i++)         //записывает в текстовую перменную простые вычисления + - * /
             {
                 TempText += IntermediateNumbers[i];
@@ -110,7 +106,7 @@ namespace TempNumbers
                         IntermediateNumbers.Add(doubles[0] / doubles[1]);               //находит значение под умножением
                 }
             }
-            TempText = "";             //обнуляет текстовую переменную
+            //TempText = "";             //обнуляет текстовую переменную
             for (int i = 0; i < IntermediateNumbers.Count; i++)              //записывает в текстовую перменную простые вычисления + -
             {
                 TempText += IntermediateNumbers[i];
@@ -142,7 +138,7 @@ namespace TempNumbers
                         IntermediateNumbers.Add(doubles[0] - doubles[1]);               //находит значение под вычитанием
                 }
             }
-            TempText = "";             //обнуляет текстовую переменную
+            //TempText = "";             //обнуляет текстовую переменную
             for (int i = 0; i < IntermediateNumbers.Count; i++)              //записывает в текстовую перменную простые вычисления +
             {
                 TempText += IntermediateNumbers[i];
@@ -154,7 +150,7 @@ namespace TempNumbers
             }
 
             List<double> Term = new List<double>();                             //Для хранения значений для сложения
-            string [ ] sbstr = TempText.Split('+', StringSplitOptions.RemoveEmptyEntries);          //разбивает на подстроки
+            string [ ] sbstr = TempText.Split('+');          //разбивает на подстроки
 
             for(int i = 0; i < sbstr.Length; i++)
             {
@@ -163,10 +159,10 @@ namespace TempNumbers
             }
             for(int i = 0; i < Term.Count - 1; i++)
             {
-                result = Term[i] + Term[i + 1];                                         //высчитывает и записывает результат вычислений
+                result += Term[i] + Term[i + 1];                                         //высчитывает и записывает результат вычислений
             }
         }
-        public BigInteger Factorial(int n)                              //Факториал
+        public static BigInteger Factorial(int n)                              //Факториал
         {
             var factorial = new BigInteger(1);
             for (int i = 1; i <= n; i++)
