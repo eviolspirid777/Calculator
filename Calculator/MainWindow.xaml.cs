@@ -185,10 +185,11 @@ namespace Calculator
                 }
                 if (CalculateBox.Text.Contains("LOG"))
                 {
-                    string[] substrings = CalculateBox.Text.Split(' ');         // разбиваем строку на массив подстрок
-                    S1 = int.Parse(substrings[1]);                              // извлекаем первый элемент массива
-                    S2 = int.Parse(substrings[2]);
-                    CalculateBox.Text = Convert.ToString(Math.Log(S2, S1));
+                    string [ ] substrings = CalculateBox.Text.Split(' ');         // разбиваем строку на массив подстрок
+                    if (!double.TryParse(substring[2], out S2) || !double.TryParse(substring[1], out S1))
+                        CatchError();
+                    else
+                        CalculateBox.Text = Convert.ToString(Math.Log(S2, S1));
                 }
             }
         }
