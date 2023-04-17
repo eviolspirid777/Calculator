@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Calculator"
         mc:Ignorable="d"
-        Title="Calculator" Height="470" Width="520" Background="#FFF8DC" KeyDown="WindowKeyDown">
+        Title="Calculator" Height="500" Width="520" Background="#FFF8DC" KeyDown="WindowKeyDown">
     <Grid>
-        <TextBox x:Name="CalculateBox" Width="470" Height="60" VerticalAlignment="Top"  HorizontalAlignment="Center" Background="#F5DEB3" FontSize="18" IsEnabled="False" Margin="0,19,0,0" FontWeight="Bold" FontFamily="Times New Roman"/>
+        <TextBox x:Name="CalculateBox" Width="470" Height="60" VerticalAlignment="Top"  HorizontalAlignment="Center" Background="#F5DEB3" FontSize="18" IsEnabled="False" Margin="0,19,0,0" FontWeight="Bold" FontFamily="Times New Roman" TextWrapping="Wrap"/>
         <Button x:Name="btnC" Height="30" Width="50" HorizontalAlignment="Left" Margin="25,0,0,150" Content="C" Foreground="Red" Background="#FFE4C4" Click="buttonCClick" IsCancel="True"/>
         <Button x:Name="btnM1C" Height="30" Width="50" HorizontalAlignment="Left" Margin="375,100,0,250" Content="M1C" Foreground="Red" Background="#FFE4C4" Click="buttonM1CClick"/>
         <Button x:Name="btnM2C" Height="30" Width="50" HorizontalAlignment="Left" Margin="435,100,0,250" Content="M2C" Foreground="Red" Background="#FFE4C4" Click="buttonM2CClick"/>
