@@ -8,42 +8,42 @@
         Title="Calculator" Height="500" Width="520" Background="#FFF8DC" KeyDown="WindowKeyDown">
     <Grid>
         <TextBox x:Name="CalculateBox" Width="470" Height="60" VerticalAlignment="Top"  HorizontalAlignment="Center" Background="#F5DEB3" FontSize="18" IsEnabled="False" Margin="0,19,0,0" FontWeight="Bold" FontFamily="Times New Roman" TextWrapping="Wrap"/>
-        <Button x:Name="btnC" Height="30" Width="50" HorizontalAlignment="Left" Margin="25,0,0,150" Content="C" Foreground="Red" Background="#FFE4C4" Click="buttonCClick" IsCancel="True"/>
+        <Button x:Name="btnC" Width="54" HorizontalAlignment="Left" Margin="25,152,0,296" Content="C" Foreground="Red" Background="#FFE4C4" Click="buttonCClick" IsCancel="True"/>
         <Button x:Name="btnM1C" Height="30" Width="50" HorizontalAlignment="Left" Margin="375,100,0,250" Content="M1C" Foreground="Red" Background="#FFE4C4" Click="buttonM1CClick"/>
         <Button x:Name="btnM2C" Height="30" Width="50" HorizontalAlignment="Left" Margin="435,100,0,250" Content="M2C" Foreground="Red" Background="#FFE4C4" Click="buttonM2CClick"/>
-        <Button x:Name="btnEquals" Height="30" Width="50" HorizontalAlignment="Left" Margin="220,322,0,72" Content="=" Background="#FFE4C4" Click="EqualClick" IsDefault="True"/>
-        <Button x:Name="btnBack" Height="30" Width="50" HorizontalAlignment="Left" Margin="220,100,0,250" Content="Back" Background="#FFE4C4" Click="BackClick"/>
-        <Button x:Name="btnDot" Height="30" Width="50" HorizontalAlignment="Left" Margin="155,322,0,72" Content="," Background="#FFE4C4" Click="DotClick"/>
+        <Button x:Name="btnEquals" Width="52" HorizontalAlignment="Center" Margin="0,385,0,63" Content="=" Background="#FFE4C4" Click="EqualClick" IsDefault="True"/>
+        <Button x:Name="btnBack" Width="52" HorizontalAlignment="Center" Margin="0,152,0,296" Content="Back" Background="#FFE4C4" Click="BackClick"/>
+        <Button x:Name="btnDot" Width="53" HorizontalAlignment="Left" Margin="163,385,0,63" Content="," Background="#FFE4C4" Click="DotClick"/>
         <Button x:Name="btnMR1" Height="30" Width="50" HorizontalAlignment="Left" Margin="375,140,0,210" Content="MR1" Background="#FFE4C4" Click="buttonM1RClick"/>
         <Button x:Name="btnMR2" Height="30" Width="50" HorizontalAlignment="Left" Margin="434,140,0,210" Content="MR2" Background="#FFE4C4" Click="buttonM2RClick"/>
-        <Button x:Name="btnPlus" Height="30" Width="50" HorizontalAlignment="Left" Margin="220,140,0,210" Content="+" Background="#FFE4C4" Click="buttonPlus"/>
-        <Button x:Name="btn7" Height="30" Width="50" HorizontalAlignment="Left" Margin="25,180,0,170" Content="7" Background="#FFE4C4" Click="button7Click"/>
-        <Button x:Name="btn8" Height="30" Width="50" HorizontalAlignment="Left" Margin="90,180,0,170" Content="8" Background="#FFE4C4" Click="button8Click"/>
-        <Button x:Name="btn9" Height="30" Width="50" HorizontalAlignment="Left" Margin="155,180,0,170" Content="9" Background="#FFE4C4" Click="button9Click"/>
+        <Button x:Name="btnPlus" Width="52" HorizontalAlignment="Center" Margin="0,198,0,250" Content="+" Background="#FFE4C4" Click="buttonPlus"/>
+        <Button x:Name="btn7" Width="54" HorizontalAlignment="Left" Margin="25,246,0,203" Content="7" Background="#FFE4C4" Click="button7Click"/>
+        <Button x:Name="btn8" Width="53" HorizontalAlignment="Left" Margin="94,246,0,203" Content="8" Background="#FFE4C4" Click="button8Click"/>
+        <Button x:Name="btn9" Width="53" HorizontalAlignment="Left" Margin="163,246,0,203" Content="9" Background="#FFE4C4" Click="button9Click"/>
         <Button x:Name="btnM1Plus" Height="30" Width="50" HorizontalAlignment="Left" Margin="375,180,0,170" Content="M1+" Background="#FFE4C4" Click="buttonM1PlusClick"/>
         <Button x:Name="btnMP2lus" Height="30" Width="50" HorizontalAlignment="Left" Margin="435,180,0,170" Content="M2+" Background="#FFE4C4" Click="buttonM2PlusClick"/>
-        <Button x:Name="btnMinus" Height="30" Width="50" HorizontalAlignment="Left" Margin="220,180,0,170" Content="-" Background="#FFE4C4" Click="buttonMinus" />
-        <Button x:Name="btn4" Height="30" Width="50" HorizontalAlignment="Left" Margin="25,220,0,130" Content="4" Background="#FFE4C4" Click="button4Click"/>
-        <Button x:Name="btn5" Height="30" Width="50" HorizontalAlignment="Left" Margin="90,220,0,130" Content="5" Background="#FFE4C4" Click="button5Click"/>
-        <Button x:Name="btn6" Height="30" Width="50" HorizontalAlignment="Left" Margin="155,220,0,130" Content="6" Background="#FFE4C4" Click="button6Click"/>
+        <Button x:Name="btnMinus" Width="52" HorizontalAlignment="Center" Margin="0,246,0,203" Content="-" Background="#FFE4C4" Click="buttonMinus" />
+        <Button x:Name="btn4" Width="54" HorizontalAlignment="Left" Margin="25,292,0,157" Content="4" Background="#FFE4C4" Click="button4Click"/>
+        <Button x:Name="btn5" Width="53" HorizontalAlignment="Left" Margin="94,292,0,157" Content="5" Background="#FFE4C4" Click="button5Click"/>
+        <Button x:Name="btn6" Width="53" HorizontalAlignment="Left" Margin="163,292,0,157" Content="6" Background="#FFE4C4" Click="button6Click"/>
         <Button x:Name="btnM1minus" Height="30" Width="50" HorizontalAlignment="Left" Margin="375,220,0,130" Content="M1-" Background="#FFE4C4" Click="buttonM1MinusClick" />
         <Button x:Name="btnM2minus" Height="30" Width="50" HorizontalAlignment="Left" Margin="435,220,0,130" Content="M2-" Background="#FFE4C4" Click="buttonM2MinusClick" />
-        <Button x:Name="btnMultiply" Height="30" Width="50" HorizontalAlignment="Left" Margin="220,220,0,130" Content="*" Background="#FFE4C4" Click="buttonMultiply"/>
-        <Button x:Name="btn1" Height="30" Width="50" HorizontalAlignment="Left" Margin="25,260,0,90" Content="1" Background="#FFE4C4" Click="button1Click"/>
-        <Button x:Name="btn2" Height="30" Width="50" HorizontalAlignment="Left" Margin="90,260,0,90" Content="2" Background="#FFE4C4" Click="button2Click"/>
-        <Button x:Name="btn3" Height="30" Width="50" HorizontalAlignment="Left" Margin="155,260,0,90" Content="3" Background="#FFE4C4" Click="button3Click"/>
-        <Button x:Name="btnSin" Height="30" Width="50" HorizontalAlignment="Left" Margin="285,180,0,170" Content="sin" Background="#FFE4C4" Click="buttonSin"/>
-        <Button x:Name="btnDivision" Height="30" Width="50" HorizontalAlignment="Left" Margin="220,260,0,90" Content="/" Background="#FFE4C4" Click="buttonDivision"/>
-        <Button x:Name="btnPlusMinus" Height="30" Width="50" HorizontalAlignment="Left" Margin="25,322,0,72" Content="-/+" Background="#FFE4C4" Click="buttonPlusMinusClick"/>
-        <Button x:Name="btn0" Height="30" Width="50" HorizontalAlignment="Left" Margin="90,322,0,72" Content="0" Background="#FFE4C4" Click="button0Click"/>
-        <Button x:Name="btnCos" Height="30" Width="50" HorizontalAlignment="Left" Margin="285,100,0,250" Content="cos" Background="#FFE4C4" Click="buttonCos"/>
-        <Button x:Name="btnTg" Height="30" Width="50" HorizontalAlignment="Left" Margin="285,220,0,130" Content="tg" Background="#FFE4C4" Click="buttonTan"/>
-        <Button x:Name="btnArctg" Height="30" Width="50" HorizontalAlignment="Left" Margin="285,140,0,210" Content="arctg" Background="#FFE4C4" Click="buttonArctg"/>
-        <Button x:Name="btnLog" Height="30" Width="50" HorizontalAlignment="Left" Margin="155,100,0,250" Content="log" Background="#FFE4C4" Click="buttonLog" />
-        <Button x:Name="btnLn" Height="30" Width="50" HorizontalAlignment="Left" Margin="90,100,0,250" Content="Ln" Background="#FFE4C4" Click="buttonLn"/>
-        <Button x:Name="btnFactorial" Height="30" Width="50" HorizontalAlignment="Left" Margin="155,140,0,210" Content="!n" Background="#FFE4C4" Click="buttonFactorial"/>
-        <Button x:Name="btnInverse" Height="30" Width="50" HorizontalAlignment="Left" Margin="90,140,0,210" Content="1/x" Background="#FFE4C4" Click="buttonReverse" RenderTransformOrigin="6.041,-2.072"/>
-        <Button x:Name="btnExp" Height="30" Width="50" HorizontalAlignment="Left" Margin="285,260,0,90" Content="exp" Background="#FFE4C4" Click="buttonExp"/>
-        <Button x:Name="btnExponentiation" Height="30" Width="50" HorizontalAlignment="Left" Margin="25,140,0,210" Content="x^y" Background="#FFE4C4" Click="buttonExponentiation"/>
+        <Button x:Name="btnMultiply" Width="52" HorizontalAlignment="Center" Margin="0,292,0,157" Content="*" Background="#FFE4C4" Click="buttonMultiply"/>
+        <Button x:Name="btn1" Width="54" HorizontalAlignment="Left" Margin="25,339,0,109" Content="1" Background="#FFE4C4" Click="button1Click"/>
+        <Button x:Name="btn2" Width="53" HorizontalAlignment="Left" Margin="94,339,0,109" Content="2" Background="#FFE4C4" Click="button2Click"/>
+        <Button x:Name="btn3" Width="53" HorizontalAlignment="Left" Margin="163,339,0,109" Content="3" Background="#FFE4C4" Click="button3Click"/>
+        <Button x:Name="btnSin" Width="52" HorizontalAlignment="Left" Margin="302,246,0,203" Content="sin" Background="#FFE4C4" Click="buttonSin"/>
+        <Button x:Name="btnDivision" Width="52" HorizontalAlignment="Center" Margin="0,339,0,109" Content="/" Background="#FFE4C4" Click="buttonDivision"/>
+        <Button x:Name="btnPlusMinus" Width="54" HorizontalAlignment="Left" Margin="25,385,0,63" Content="-/+" Background="#FFE4C4" Click="buttonPlusMinusClick"/>
+        <Button x:Name="btn0" Width="53" HorizontalAlignment="Left" Margin="94,385,0,63" Content="0" Background="#FFE4C4" Click="button0Click"/>
+        <Button x:Name="btnCos" Width="52" HorizontalAlignment="Left" Margin="302,152,0,296" Content="cos" Background="#FFE4C4" Click="buttonCos"/>
+        <Button x:Name="btnTg" Width="52" HorizontalAlignment="Left" Margin="302,292,0,157" Content="tg" Background="#FFE4C4" Click="buttonTan"/>
+        <Button x:Name="btnArctg" Width="52" HorizontalAlignment="Left" Margin="302,198,0,250" Content="arctg" Background="#FFE4C4" Click="buttonArctg"/>
+        <Button x:Name="btnLog" Width="53" HorizontalAlignment="Left" Margin="163,152,0,296" Content="log" Background="#FFE4C4" Click="buttonLog" />
+        <Button x:Name="btnLn" Width="53" HorizontalAlignment="Left" Margin="94,152,0,296" Content="Ln" Background="#FFE4C4" Click="buttonLn"/>
+        <Button x:Name="btnFactorial" Width="53" HorizontalAlignment="Left" Margin="163,198,0,250" Content="!n" Background="#FFE4C4" Click="buttonFactorial"/>
+        <Button x:Name="btnInverse" Width="53" HorizontalAlignment="Left" Margin="94,198,0,250" Content="1/x" Background="#FFE4C4" Click="buttonReverse" RenderTransformOrigin="6.041,-2.072"/>
+        <Button x:Name="btnExp" Width="52" HorizontalAlignment="Left" Margin="302,339,0,109" Content="exp" Background="#FFE4C4" Click="buttonExp"/>
+        <Button x:Name="btnExponentiation" Width="54" HorizontalAlignment="Left" Margin="25,198,0,250" Content="x^y" Background="#FFE4C4" Click="buttonExponentiation"/>
     </Grid>
 </Window>
